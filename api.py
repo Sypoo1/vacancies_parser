@@ -16,17 +16,17 @@ async def get_vacancies(**kwargs):
 
 async def main():
 
-    salary = 1_000
+    salary = None
 
     params = {
-        "page": 1,
-        "per_page": 3,
-        "text": "c++",
+        "per_page": 5, # <= 100
+        "text": "программист",
         "search_field": ["name", "description"],  # name, company_name, description
         "experience": ["between1And3"],  # noExperience, between1And3, between3And6, moreThan6,
-        "employment": ["project", "part"],  # full, part, project, volunteer, probation,
+        "employment": ["full", "part"],  # full, part, project, volunteer, probation,
         "only_with_salary": "True",
-        "order_by": "publication_time", # publication_time, salary_desc, salary_asc, relevance
+
+        "order_by": "relevance", # publication_time, salary_desc, salary_asc, relevance
     }
 
     if salary is not None:
