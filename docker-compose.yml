@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+
+  redis:
+    image: redis:7.2.1
+    container_name: redis
+    restart: on-failure
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/data
+    command:
+    - "redis-server"
+    - "--save 360 10"
+    - "--maxmemory ${REDIS_MAXMEM:-50mb}"
+    - "--maxmemory-policy ${REDIS_POLICY:-allkeys-lru}"
+    networks:
+      botnet:
+        ipv4_address: 172.18.0.1
+
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    restart: on-failure
+    ports:
+      - "5432:5432"
+    volumes:
+      # это backup
+      - ./database/pgdata_postgres:/var/lib/postgresql/data
+      # это скрипты инициализации
+      - ./database/init/:/docker-entrypoint-initdb.d/
+
+    environment:
+      POSTGRES_USER: "developer"
+      POSTGRES_PASSWORD: "pgpwdvskhd"
+      POSTGRES_DB: "VacancyDB"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+
+    networks:
+      botnet:
+        ipv4_address: 172.18.0.10
+        
+
+  bot:
+    build: .
+    container_name: bot
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      botnet:
+
+
+networks:
+  botnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+          gateway: 172.18.35.254
+
+
+
+

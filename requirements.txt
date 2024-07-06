@@ -1,0 +1,6 @@
+psycopg==3.1.18
+psycopg-binary==3.1.18
+redis==4.6.0
+aiogram==3.4.1
+python-dotenv==1.0.0
+aiohttp==3.9.5
