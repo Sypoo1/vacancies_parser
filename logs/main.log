@@ -336,3 +336,52 @@ AttributeError: 'Redis' object has no attribute 'aclose'
 2024-07-06 22:28:27,485 ;;; INFO ;;; new_data = [{'id': 143, 'user_id': 1158238566, 'name': 'Senior Backend Python Developer', 'url': 'https://hh.ru/vacancy/102904313', 'salary_currency': 'USD       ', 'salary_from': 90000, 'salary_to': 110000, 'salary_gross': True, 'area': 'Сербия'}, {'id': 144, 'user_id': 1158238566, 'name': 'C++ Developer', 'url': 'https://hh.ru/vacancy/103194419', 'salary_currency': 'EUR       ', 'salary_from': 60000, 'salary_to': 80000, 'salary_gross': True, 'area': 'Сербия'}, {'id': 145, 'user_id': 1158238566, 'name': 'Lead Machine Learning Engineer (Computer Vision)', 'url': 'https://hh.ru/vacancy/102500638', 'salary_currency': 'RUR       ', 'salary_from': 1000000, 'salary_to': None, 'salary_gross': False, 'area': 'Москва'}, {'id': 146, 'user_id': 1158238566, 'name': 'Руководитель разработки / СТО', 'url': 'https://hh.ru/vacancy/103124234', 'salary_currency': 'USD       ', 'salary_from': None, 'salary_to': 15000, 'salary_gross': False, 'area': 'Москва'}, {'id': 147, 'user_id': 1158238566, 'name': 'Lead DevOps Engineer', 'url': 'https://hh.ru/vacancy/102898790', 'salary_currency': 'USD       ', 'salary_from': 10000, 'salary_to': 12000, 'salary_gross': True, 'area': 'Кипр'}]
 2024-07-06 22:28:28,129 ;;; INFO ;;; вакансии успешно отправлены у пользоват 1158238566
 2024-07-06 22:28:28,131 ;;; INFO ;;; Update id=415267366 is handled. Duration 1199 ms by bot id=7294438110
+2024-07-06 22:31:09,833 ;;; WARNING ;;; Received SIGTERM signal
+2024-07-06 22:31:09,834 ;;; INFO ;;; Polling stopped for bot @VacanciesParserHelperBot id=7294438110 - 'Vacancies Parser Helper'
+2024-07-06 22:31:09,834 ;;; INFO ;;; Polling stopped
+2024-07-06 22:31:10,085 ;;; ERROR ;;;  user_id = 666 ;;; ошибка: 'Redis' object has no attribute 'aclose'
+Traceback (most recent call last):
+  File "/app/main.py", line 31, in main
+    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+  File "/usr/local/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 556, in start_polling
+    await self.emit_shutdown(bot=bots[-1], **workflow_data)
+  File "/usr/local/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 255, in emit_shutdown
+    await self.shutdown.trigger(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/aiogram/dispatcher/event/event.py", line 42, in trigger
+    await handler.call(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/aiogram/fsm/middleware.py", line 110, in close
+    await self.storage.close()
+  File "/usr/local/lib/python3.11/site-packages/aiogram/fsm/storage/redis.py", line 141, in close
+    await self.redis.aclose(close_connection_pool=True)
+          ^^^^^^^^^^^^^^^^^
+AttributeError: 'Redis' object has no attribute 'aclose'
+2024-07-06 22:31:27,853 ;;; INFO ;;; запуск бота
+2024-07-06 22:31:27,854 ;;; INFO ;;; вызвана функция main
+2024-07-06 22:31:28,022 ;;; INFO ;;; Start polling
+2024-07-06 22:31:28,074 ;;; INFO ;;; Run polling for bot @VacanciesParserHelperBot id=7294438110 - 'Vacancies Parser Helper'
+2024-07-06 22:32:15,125 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение /update_data 
+2024-07-06 22:32:15,349 ;;; INFO ;;; Update id=415267367 is handled. Duration 228 ms by bot id=7294438110
+2024-07-06 22:32:18,930 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение питон
+2024-07-06 22:32:19,014 ;;; INFO ;;; Update id=415267368 is handled. Duration 85 ms by bot id=7294438110
+2024-07-06 22:32:20,266 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение да
+2024-07-06 22:32:20,354 ;;; INFO ;;; Update id=415267369 is handled. Duration 88 ms by bot id=7294438110
+2024-07-06 22:32:22,429 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение 10000
+2024-07-06 22:32:22,558 ;;; INFO ;;; Update id=415267370 is handled. Duration 130 ms by bot id=7294438110
+2024-07-06 22:32:26,429 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение 60
+2024-07-06 22:32:26,527 ;;; INFO ;;; Update id=415267371 is handled. Duration 100 ms by bot id=7294438110
+2024-07-06 22:32:30,649 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение name company_name description
+2024-07-06 22:32:30,762 ;;; INFO ;;; Update id=415267372 is handled. Duration 116 ms by bot id=7294438110
+2024-07-06 22:32:34,469 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение noExperience between1And3 between3And6 moreThan6
+2024-07-06 22:32:34,568 ;;; INFO ;;; Update id=415267373 is handled. Duration 101 ms by bot id=7294438110
+2024-07-06 22:32:36,677 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение нет
+2024-07-06 22:32:36,754 ;;; INFO ;;; Update id=415267374 is handled. Duration 79 ms by bot id=7294438110
+2024-07-06 22:32:39,046 ;;; INFO ;;;  user_id = 1158238566  отправил сообщение salary_desc
+2024-07-06 22:32:39,461 ;;; INFO ;;; вызывается функция delete_user_vacancies для пользователя id=1158238566
+2024-07-06 22:32:39,577 ;;; INFO ;;; Успешное удаление всех записей для пользователя id=1158238566
+2024-07-06 22:32:39,577 ;;; INFO ;;; вызвана функция insert_data для пользователя id=1158238566
+2024-07-06 22:32:40,882 ;;; INFO ;;; вызывается функция get_vacancies_data для пользователя id=1158238566
+2024-07-06 22:32:43,181 ;;; INFO ;;; вакансии успешно отправлены у пользоват 1158238566
+2024-07-06 22:32:43,182 ;;; INFO ;;; Update id=415267375 is handled. Duration 4138 ms by bot id=7294438110
